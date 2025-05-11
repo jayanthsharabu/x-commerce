@@ -1,32 +1,11 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
+import "@/app/globals.css";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    template: `%s | ${APP_NAME}`,
-    default: APP_NAME,
-  },
-  description: APP_DESCRIPTION,
-  metadataBase: new URL(SERVER_URL),
-  icons: {
-    icon: "/favicon.ico",
-  },
-  themeColor: "#000000",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },  
-};
 
 export default function RootLayout({
   children,
@@ -34,12 +13,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>    
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       <body
-        className={`${inter.className}`}
+        className={`${inter.className} flex h-screen flex-col`}
       >
         {children}
       </body>
+      </ThemeProvider>
     </html>
   );
 }
