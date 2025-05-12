@@ -14,16 +14,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>  
-    <body>  
+    <body className={`${inter.className} flex h-screen flex-col`}>  
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
-    >
-      
-        className={`${inter.className} flex h-screen flex-col`}
-      
+    > 
         {children}
       
       </ThemeProvider>
