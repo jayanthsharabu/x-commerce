@@ -4,3 +4,25 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-destructive {
+  color: #b91c1c;
+} 
+
+.text-xs {
+  font-size: 12px;
+} 
+
+.h2-bold {
+  font-size: 24px;
+  font-weight: bold;
+} 
+
+
+
