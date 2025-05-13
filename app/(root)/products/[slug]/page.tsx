@@ -2,8 +2,7 @@ import { getProduct } from "@/lib/actions/product.actions";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import productPrice from "@/lib/utils/productPrice";
+import { Card, CardContent } from "@/components/ui/card";
 import ProductPrice from "@/components/shared/product/product-price";
 import ProductImages from "@/components/shared/product/product-images";
 
@@ -25,7 +24,7 @@ const ProductDetailsPage = async ( props: {params: Promise<{slug: string}>}) => 
             <div className="flex flex-col gap-6">
                     <p>{product.brand} {product.category}</p>
                     <h1 className="h3-bold">{product.name}</h1>
-                    <p>{product.rating} of {product.numReviews} Reviews</p>
+                    <p>{Number(product.rating)} of {product.numReviews} Reviews</p>
                     <div className="flex flex-col sm: flex-row sm: items-center gap-3">
                         <ProductPrice price={Number(product.price)} className="w-24 rounded-full bg-green-100 text-green-700 p-5 py-2" />
                     </div>
