@@ -47,19 +47,34 @@ export const config = {
     ],
     callbacks: {
         async session({session, user, trigger, token} : any) {
-            if (token.sub) {
-                session.user.id = token.sub;
-            }
+            
+            session.user.id = token.sub;
+            session.user.role = token.role;
+            session.user.name = token.name;
+
+            console.log(session);
             if (trigger === 'update') {
                 session.user.name = user.name;
-                session.user.email = user.email;
-                session.user.role = user.role;
             }
             return session;
         },
         async jwt({token, user, account, profile, isNewUser} : any) {
             if (user) {
                 token.sub = user.id;
+            }
+            return token;
+        },
+        async jwt({token, user, trigger, session} : any) {
+            if (user){
+                token.role = user.role;
+                if (user.name === null ){
+                    token.email = user.email!.split('@')[0];
+
+                    await prisma.user.update({
+                        where: {id: user.id},
+                        data: {name: token.name}
+                    });
+                }
             }
             return token;
         },

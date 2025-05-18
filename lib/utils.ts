@@ -5,6 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export function formatNumberWithDecimal(value: number | string): string {
+  if (typeof value === 'number') {
+    return value.toFixed(2);
+  }
+  return value;
+}
+
 // obj -> js 
 export function convertToPlainObject<T>(value : T): T {
   return JSON.parse(JSON.stringify(value));

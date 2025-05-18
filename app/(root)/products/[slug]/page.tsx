@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ProductPrice from "@/components/shared/product/product-price";
 import ProductImages from "@/components/shared/product/product-images";
+import AddtoCart from "@/components/shared/product/add-to-cart";
 
 const ProductDetailsPage = async ( props: {params: Promise<{slug: string}>}) => {
     const {slug} = await props.params;
@@ -53,7 +54,14 @@ const ProductDetailsPage = async ( props: {params: Promise<{slug: string}>}) => 
       )}
     </div>
     {product.stock > 0 && (
-        <Button className="w-full">Add to Cart</Button>
+        <AddtoCart item={{
+          productId: product.id,
+          slug: product.slug,
+          name: product.name,
+          price: String(product.price),
+          image: product.images![0],
+          quantity: 1,
+        }} />
     )}
   </CardContent>
 
