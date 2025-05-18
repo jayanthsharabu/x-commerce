@@ -4,7 +4,7 @@ const sampleData = {
     {
       name: 'Jay',
       email: 'Jay@fuck.com',
-      password: hashSync('Mans', 10),
+      password: hashSync('ManvithaAvvaru', 10),
     },
   ],
   products: [
