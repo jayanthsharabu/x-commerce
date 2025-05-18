@@ -9,3 +9,9 @@ export const SERVER_URL =
     email: '',
     password: '',
   }
+  export const SIGNUP_DEFAULT_VALUES = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }

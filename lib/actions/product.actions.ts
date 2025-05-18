@@ -24,3 +24,5 @@ export const getProduct = async (slug: string) => {
 
     return data;
 }
+
+
