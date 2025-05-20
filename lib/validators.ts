@@ -43,3 +43,5 @@ export const insertCartSchema = z.object({
 
 
 export type SignInSchema = z.infer<typeof signInSchema>;
+export type CartItemSchema = z.infer<typeof cartItemSchema>;
+export type InsertCartSchema = z.infer<typeof insertCartSchema>;
